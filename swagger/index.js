@@ -1,12 +1,19 @@
 import express from 'express';
 import { tempRouter } from '../src/routes/temp.route.js';
+import { userRouter } from '../src/routes/user.route.js';
 import { response } from '../config/response.js';
-import { status } from "../../config/response.status.js";
+import { status } from "../config/response.status.js";
+import { specs } from '../config/swagger.config.js';
+import SwaggerUi from 'swagger-ui-express';
 
 const app = express();
 const port = 3000;
 
+app.use(express.urlencoded({extended: false}));
+app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(specs));
+
 app.use('/temp', tempRouter);
+app.use('/user', userRouter);
 
 app.use((req, res, next) => {
     const err = new BaseError(status.NOT_FOUND);
