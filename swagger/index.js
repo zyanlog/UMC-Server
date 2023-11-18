@@ -1,0 +1,1 @@
+import { reviewRouter } from "../src/routes/review.route";
