@@ -13,5 +13,9 @@ export const createReview = async (body) => {
         'image' : body.image
     });
 
-    return addReviewResponseDTO(await getReview(createReviewData));
+    if (createReviewData == -1) {
+        throw new BaseError(status.STORE_NOT_FOUND);
+    } else {
+        return addReviewResponseDTO(await getReview(createReviewData));
+    }
 }

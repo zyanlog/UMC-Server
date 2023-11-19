@@ -1,12 +1,19 @@
 import { pool } from "../../config/db.config";
 import { BaseError } from "../../config/error";
 import { status } from "../../config/response.status";
-import {  } from "./review.sql.js";
+import { confirmStore, insertReviewSql, getReviewID } from "./review.sql.js";
 
 // Review 데이터 삽입
 export const addReview = async (data) => {
     try{
         const conn = await pool.getConnection();
+
+        const [confirm] = await pool.query(confirmStore, store_id);
+
+        if(confirm[0].isNotFoundStore){
+            conn.release();
+            return -1;
+        }
 
         const result = await pool.query(insertReviewSql, [data.user_id, data.store_id, data.body, data.score, data.image]);
 
