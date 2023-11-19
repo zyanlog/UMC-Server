@@ -1,7 +1,7 @@
-import { BaseError } from "../../config/error";
-import { status } from "../../config/response.status";
-import { signinResponseDTO } from "../dtos/mission.dto"
-import { addUser, getUser, getUserPreferToUserID, setPrefer } from "../models/mission.dao";
+import { BaseError } from "../../config/error.js";
+import { status } from "../../config/response.status.js";
+import { addMissionResponseDTO } from "../dtos/mission.dto.js"
+import { addMission, getMission } from "../models/mission.dao.js";
 
 export const addMission = async (body) => {
     const addMissionData = await addMission({

@@ -1,7 +1,7 @@
-import { pool } from "../../config/db.config";
-import { BaseError } from "../../config/error";
-import { status } from "../../config/response.status";
-import {  } from "./mission.sql.js";
+import { pool } from "../../config/db.config.js";
+import { BaseError } from "../../config/error.js";
+import { status } from "../../config/response.status.js";
+import { insertMissionSql, getMissionID } from "./mission.sql.js";
 
 // Mission 데이터 삽입
 export const addMission = async (data) => {
