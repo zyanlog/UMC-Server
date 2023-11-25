@@ -10,3 +10,9 @@ export const getPreferToUserID =
 "SELECT ufc.uf_category_id, ufc.f_category_id, ufc.user_id, fcl.f_category_name "
 + "FROM user_favor_category ufc JOIN food_category_list fcl on ufc.f_category_id = fcl.f_category_id "
 + "WHERE ufc.user_id = ? ORDER BY ufc.f_category_id ASC;";
+
+export const insertMissionSql = "INSERT INTO member_mission (member_id, store_id, status) VALUES (?, ?, ?);";
+
+export const getMissionID = "SELECT * FROM member_mission WHERE mission_id = ?";
+
+export const confirmMission = "SELECT EXISTS(SELECT 1 FROM member_mission WHERE member_id = ? and store_id = ?) as isExistMission";

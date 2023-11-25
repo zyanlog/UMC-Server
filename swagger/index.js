@@ -1,4 +1,5 @@
 import express from 'express';
+import asyncHandler from 'express-async-handler';
 import { tempRouter } from '../src/routes/temp.route.js';
 import { userRouter } from '../src/routes/user.route.js';
 import { reviewRouter } from '../src/routes/review.route.js'
@@ -15,7 +16,7 @@ app.use(express.urlencoded({extended: false}));
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(specs));
 
 app.use('/temp', tempRouter);
-app.use('/user', userRouter);
+app.use('/user', asyncHandler(userRouter));
 app.use('/review', reviewRouter);
 app.use('/mission', missionRouter);
 
