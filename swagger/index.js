@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended: false}));
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(specs));
 
 app.use('/temp', tempRouter);
-app.use('/user', userRouter);
+app.use('/:userId', userRouter);
 app.use('/review', reviewRouter);
 app.use('/mission', missionRouter);
 app.use('/:storeId', storeRouter);
