@@ -16,3 +16,15 @@ export const insertMissionSql = "INSERT INTO member_mission (member_id, store_id
 export const getMissionID = "SELECT * FROM member_mission WHERE mission_id = ?";
 
 export const confirmMission = "SELECT EXISTS(SELECT 1 FROM member_mission WHERE member_id = ? and store_id = ?) as isExistMission";
+
+export const getReviewByReviewId = 
+"SELECT u.user_name, u.user_id, r.review_id, r.rate, r.review_content, r.created_at "
++ "FROM review r JOIN user u on r.user_id = u.user_id "
++ "WHERE u.user_id = ? AND r.review_id < ? "
++ "ORDER BY r.review_id DESC LIMIT ? ;"
+
+export const getReviewByReviewIdAtFirst = 
+"SELECT u.user_name, u.user_id, r.review_id, r.rate, r.review_content, r.created_at "
++ "FROM review r JOIN user u on r.user_id = u.user_id "
++ "WHERE u.user_id = ? "
++ "ORDER BY r.review_id DESC LIMIT ? ;"
