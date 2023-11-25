@@ -6,4 +6,4 @@ import { userMissionAdd } from '../controllers/user.controller.js';
 export const userRouter = express.Router();
 
 userRouter.post('/signin', asyncHandler(userSignin));
-userRouter.post('/mission', userMissionAdd);
+userRouter.post('/mission', asyncHandler(userMissionAdd));

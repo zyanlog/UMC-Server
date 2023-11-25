@@ -39,4 +39,5 @@ export const addMission = async (body) => {
         throw new BaseError(status.MEMBER_MISSION_ALREADY_EXIST);
     } else {
         return addMissionResponseDTO(await getMission(addMissionData));
+    }
 }
