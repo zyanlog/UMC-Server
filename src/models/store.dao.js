@@ -1,6 +1,6 @@
-import { pool } from "../../config/db.config";
-import { BaseError } from "../../config/error";
-import { status } from "../../config/response.status";
+import { pool } from "../../config/db.config.js";
+import { BaseError } from "../../config/error.js";
+import { status } from "../../config/response.status.js";
 import { getReviewByReviewId, getReviewByReviewIdAtFirst } from "./store.sql.js";
 
 export const getPreviewReview = async (cursorId, size, storeId) => {

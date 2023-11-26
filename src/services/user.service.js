@@ -27,7 +27,7 @@ export const joinUser = async (body) => {
     }
 }
 
-export const addMission = async (body) => {
+export const addOneMission = async (body) => {
 
     const addMissionData = await addMission ({
         'member_id': body.member_id,

@@ -1,5 +1,5 @@
 import express from 'express';
-import { tempRouter } from '../src/routes/temp.route.js';
+// import { tempRouter } from '../src/routes/temp.route.js';
 import { userRouter } from '../src/routes/user.route.js';
 import { reviewRouter } from '../src/routes/review.route.js'
 import { missionRouter } from '../src/routes/mission.route.js';
@@ -15,7 +15,7 @@ const port = 3000;
 app.use(express.urlencoded({extended: false}));
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(specs));
 
-app.use('/temp', tempRouter);
+// app.use('/temp', tempRouter);
 app.use('/:userId', userRouter);
 app.use('/review', reviewRouter);
 app.use('/mission', missionRouter);

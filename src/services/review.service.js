@@ -1,7 +1,7 @@
 import { BaseError } from "../../config/error.js";
 import { status } from "../../config/response.status.js";
 import { addReviewResponseDTO } from "../dtos/review.dto.js"
-import { addReview, getReview } from "../models/review.dao";
+import { addReview, getReview } from "../models/review.dao.js";
 
 export const createReview = async (body) => {
 
