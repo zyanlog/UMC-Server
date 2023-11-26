@@ -137,3 +137,22 @@ export const getPreviewReview = async (cursorId, size, userId) => {
         throw new BaseError(status.PARAMETER_IS_WRONG);
     }
 }
+
+// 진행중인 미션 보기
+export const getPreviewMission = async (cursorId, size, userId) => {
+    try {
+        const conn = await pool.getConnection();
+
+        if(cursorId == "undefined" || typeof cursorId == "undefined" || cursorId == null) {
+            const [missions] = await pool.query(getMissionByMissionIdAtFirst, [parseInt(userId), parseInt(size)]);
+            conn.release();
+            return missions;
+        } else {
+            const [missions] = await pool.query(getMissionByMissionId, [parseInt(userId), parseInt(cursorId), parseInt(size)]);
+            conn.release();
+            return missions;
+        }
+    } catch (err) {
+        throw new BaseError(status.PARAMETER_IS_WRONG);
+    }
+}

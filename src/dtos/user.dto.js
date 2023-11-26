@@ -29,3 +29,18 @@ export const previewReviewResponseDTO = (data) => {
 const formatDate = (date) => {
     return new Intl.DateTimeFormat('kr').format(new Date(date)).replaceAll(" ", "").slice(0, -1);
 }
+
+export const previewMissionResponseDTO = (data) => {
+
+    const missions = [];
+
+    for (let i = 0; i < data.length; i++) {
+        missions.push({
+            "store_name": data[i].name,
+            "reward": data[i].reward,
+            "deadline": formatDate(data[i].deadline),
+            "status": data[i].status
+        })
+    }
+    return {"missionData": missions, "cursorId": data[data.length - 1].mission_id};
+}

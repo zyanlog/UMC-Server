@@ -11,13 +11,13 @@ export const getReviewByReviewIdAtFirst =
 + "ORDER BY r.review_id DESC LIMIT ? ;"
 
 export const getMissionByMissionId = 
-"SELECT s.store_name, m.reward, m.deadline, m.mission_spec "
+"SELECT s.store_name, m.reward, m.deadline, m.mission_spec, m.mission_id "
 + "FROM store s JOIN mission m on s.store_id = m.store_id "
 + "WHERE s.store_id = ? AND m.mission_id < ? "
 + "ORDER BY m.mission_id DESC LIMIT ? ;"
 
 export const getMissionByMissionIdAtFirst = 
-"SELECT s.store_name, m.reward, m.deadline, m.mission_spec "
+"SELECT s.store_name, m.reward, m.deadline, m.mission_spec, m.mission_id "
 + "FROM store s JOIN mission m on s.store_id = m.store_id "
 + "WHERE s.store_id = ? "
 + "ORDER BY r.mission_id DESC LIMIT ? ;"
