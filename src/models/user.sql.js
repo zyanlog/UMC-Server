@@ -28,3 +28,15 @@ export const getReviewByReviewIdAtFirst =
 + "FROM review r JOIN user u on r.user_id = u.user_id "
 + "WHERE u.user_id = ? "
 + "ORDER BY r.review_id DESC LIMIT ? ;"
+
+export const getMissionByMissionId = 
+"SELECT s.name, m.reward, m.deadline, mm.status, mm.created_at, mm.user_id, mm.id "
++ "FROM member_mission mm JOIN mission m on mm.mission_id = m.mission_id JOIN store s ON mm.store_id = s.store_id "
++ "WHERE mm.user_id = ? AND mm.status = 'progress' AND mm.id < ?  "
++ "ORDER BY mm.id DESC LIMIT ? ;"
+
+export const getMissionByMissionIdAtFirst = 
+"SELECT s.name, m.reward, m.deadline, mm.status, mm.created_at, mm.user_id, mm.id "
++ "FROM member_mission mm JOIN mission m on mm.mission_id = m.mission_id "
++ "WHERE mm.user_id = ? AND mm.status = 'progress' "
++ "ORDER BY mm.id DESC LIMIT ? ;"

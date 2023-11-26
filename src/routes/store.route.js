@@ -5,4 +5,4 @@ import { reviewPreview, missionPreview } from "../controllers/store.controller.j
 export const storeRouter = express.Router({mergeParams: true});
 
 storeRouter.post('/reviews', asyncHandler(reviewPreview));
-storeRouter.post('/missions', asyncHandler(missionPreview))
+storeRouter.post('/missions', asyncHandler(missionPreview));
